@@ -3,11 +3,24 @@
 class filter_ipa extends moodle_text_filter {
 
     public static $filteripadefaults = array(
-        'N' => 'ŋ',
-        'T' => 'θ',
-        'D' => 'ð',
-        'S' => 'ʃ',
-        'Z' => 'ʒ'
+        'N'   => 'ŋ',
+        'T'   => 'θ',
+        'D'   => 'ð',
+        'S'   => 'ʃ',
+        'Z'   => 'ʒ',
+        'g'   => 'ɡ',
+        'P'   => 'ʔ',
+        'I'   => 'ɪ',
+        'E'   => 'ɛ',
+        '\ae' => 'æ',
+        'A'   => 'ɑ',
+        'U'   => 'ʊ',
+        '2'   => 'ʌ',
+        '0'   => 'ɔ',
+        '@'   => 'ə',
+        '""'  => 'ˌ',
+        '"'   => 'ˈ',
+        ':'   => 'ː'
     );
 
     public function filter($text, array $options = array()) {
