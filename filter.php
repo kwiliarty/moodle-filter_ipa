@@ -24,15 +24,13 @@ class filter_ipa extends moodle_text_filter {
     );
 
     public function filter($text, array $options = array()) {
-        $replacements = filter_ipa::$filteripadefaults;
-        preg_match_all('|ipa{[^}]*}|', $text, $ipas);
-        foreach ($ipas[0] as $ipa) {
-            $transcription = $ipa;
-            $transcription = substr($ipa, 4, -1);
-            foreach ($replacements as $key => $value) {
-                $transcription = str_replace($key, $value, $transcription);
-            }
-            $text = str_replace($ipa, $transcription, $text);
+        $mappings = filter_ipa::$filteripadefaults;
+        $asciis = array_keys($mappings);
+        $utf8s = array_values($mappings);
+        preg_match_all('|ipa{([^}]*)}|', $text, $ipas);
+        foreach ($ipas[1] as $key => $markup) {
+            $display = str_replace($asciis, $utf8s, $markup);
+            $text = str_replace($ipas[0][$key], $display, $text);
         }
         return $text;
     }
