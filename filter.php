@@ -30,7 +30,8 @@ class filter_ipa extends moodle_text_filter {
         preg_match_all('|ipa{([^}]*)}|', $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
             $display = str_replace($asciis, $utf8s, $markup);
-            $text = str_replace($ipas[0][$key], $display, $text);
+            $span = html_writer::tag('span', $display, array('class'=>'filter-ipa'));
+            $text = str_replace($ipas[0][$key], $span, $text);
         }
         return $text;
     }
