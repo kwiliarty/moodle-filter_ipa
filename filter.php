@@ -18,7 +18,7 @@ class filter_ipa extends moodle_text_filter {
         'A'        => 'ɑ',
         'U'        => 'ʊ',
         '2'        => 'ʌ',
-        '0'        => 'ɔ',
+        'O'        => 'ɔ',
         '@'        => 'ə',
         '"'        => 'ˈ',
         ':'        => 'ː'
