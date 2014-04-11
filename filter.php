@@ -33,7 +33,7 @@ class filter_ipa extends moodle_text_filter {
     }
 
     public static function return_ipa_json() {
-        return json_encode(self::$filteripadefaults, JSON_UNESCAPED_UNICODE);
+        return json_encode(self::$filteripadefaults, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
     }
 
     public function filter($text, array $options = array()) {
