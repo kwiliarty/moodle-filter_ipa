@@ -25,7 +25,7 @@ class filter_ipa extends moodle_text_filter {
     );
 
     public function filter($text, array $options = array()) {
-        $mappings = filter_ipa::$filteripadefaults;
+        $mappings = self::$filteripadefaults;
         $asciis = array_keys($mappings);
         $utf8s = array_values($mappings);
         preg_match_all('|ipa{([^}]*)}|', $text, $ipas);
