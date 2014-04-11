@@ -28,7 +28,7 @@ class filter_ipa extends moodle_text_filter {
         $mappings = self::$filteripadefaults;
         $asciis = array_keys($mappings);
         $utf8s = array_values($mappings);
-        preg_match_all('|ipa{([^}]*)}|', $text, $ipas);
+        preg_match_all('|ipa{(.*?)}|', $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
             $display = str_replace($asciis, $utf8s, $markup);
             $span = html_writer::tag('span', $display, array('class'=>'filter-ipa'));
