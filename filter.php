@@ -3,6 +3,7 @@
 class filter_ipa extends moodle_text_filter {
 
     public static $filteripadefaults = array(
+        '\s{m}'    => 'm&#x0329;',
         '\super h' => 'ʰ',
         '\ae'      => 'æ',
         '""'       => 'ˌ',
