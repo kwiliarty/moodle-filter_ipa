@@ -1,4 +1,7 @@
+@import url(http://fonts.googleapis.com/css?family=Tinos&subset=latin,latin-ext,cyrillic-ext,greek-ext,greek,vietnamese,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,cyrillic-ext,greek-ext,greek,devanagari,vietnamese,latin-ext,cyrillic);
+
 .filter-ipa {
+    font-family: 'Tinos', 'Noto Sans', sans-serif;
     font-size: 1.1em;
-    font-weight: bold;
 }
