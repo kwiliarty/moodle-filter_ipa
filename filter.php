@@ -3,7 +3,6 @@
 class filter_ipa extends moodle_text_filter {
 
     public static $filteripadefaults = array(
-        '\s{m}'    => 'm&#x0329;',
         '\super h' => 'ʰ',
         '\ae'      => 'æ',
         '""'       => 'ˌ',
@@ -25,6 +24,23 @@ class filter_ipa extends moodle_text_filter {
         ':'        => 'ː'
     );
 
+    public static $filteripadiacritics = array(
+        '\s{.}'    => '&#x0329;',
+    );
+
+    public static function ipa_replace_diacritics($rawtext) {
+        $mappings = self::$filteripadiacritics;
+        foreach ($mappings as $ascii => $utf8) {
+            $onset = "\s{";
+            $peak = "m";
+            $coda = "}";
+            preg_match_all('/\\\s{m}/', $rawtext, $targets);
+            echo "<pre>";
+            print_r($targets);
+            echo "</pre>";
+        }
+    }
+
     public static function ipa_replace_chars($rawtext) {
         $mappings = self::$filteripadefaults;
         $asciis = array_keys($mappings);
@@ -38,6 +54,7 @@ class filter_ipa extends moodle_text_filter {
     }
 
     public function filter($text, array $options = array()) {
+        self::ipa_replace_diacritics($text);
         preg_match_all('|ipa{(.*?)}|', $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
             $display = self::ipa_replace_chars($markup);
