@@ -76,7 +76,7 @@ class filter_ipa extends moodle_text_filter {
 
     public function filter($text, array $options = array()) {
         $text = self::ipa_replace_diacritics($text);
-        preg_match_all('|ipa{(.*?)}|', $text, $ipas);
+        preg_match_all('|ipa{(.*?)}ipa|', $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
             $display = self::ipa_replace_chars($markup);
             $span = html_writer::tag('span', $display, array('class'=>'filter-ipa'));
