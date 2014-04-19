@@ -6,6 +6,7 @@ class filter_ipa extends moodle_text_filter {
         '\super h' => 'ʰ',
         '\ae'      => 'æ',
         '\:B'      => 'ʙ',
+        '\!o'      => 'ʘ',
         '""'       => 'ˌ',
         'F'        => 'ɸ',
         'B'        => 'β',
