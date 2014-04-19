@@ -1,52 +1,24 @@
 <?php
 
-require_once(dirname(__FILE__) . '/lib.php');
+include_once(dirname(__FILE__) . '/lib.php');
 
 class filter_ipa extends moodle_text_filter {
 
-    public static $filteripadefaults = array(
-        '\super h' => 'ʰ',
-        '\ae'      => 'æ',
-        '\:B'      => 'ʙ',
-        '\!o'      => 'ʘ',
-        '""'       => 'ˌ',
-        'F'        => 'ɸ',
-        'B'        => 'β',
-        'M'        => 'ɱ',
-        'N'        => 'ŋ',
-        'T'        => 'θ',
-        'D'        => 'ð',
-        'S'        => 'ʃ',
-        'Z'        => 'ʒ',
-        'g'        => 'ɡ',
-        'P'        => 'ʔ',
-        'I'        => 'ɪ',
-        'E'        => 'ɛ',
-        'A'        => 'ɑ',
-        'U'        => 'ʊ',
-        '2'        => 'ʌ',
-        'O'        => 'ɔ',
-        '@'        => 'ə',
-        '"'        => 'ˈ',
-        ':'        => 'ː'
-    );
+    public $defaults;
+    public $diacritics;
+    public $escapees;
 
-    public static $filteripadiacritics = array(
-        '\s{.}'    => '&#x0329;',
-        '\r*.'     => '&#x0325;',
-        '\|[.'     => '&#x032A;'
-    );
+    public function __construct() {
+        $mappings = new filter_ipa_mappings();
+        $this->defaults = $mappings->filteripadefaults;
+        $this->diacritics = $mappings->filteripadiacritics;
+        $this->escapees = $mappings->escapees;
+    }
 
-    public static $escapees = array(
-        '*' => '\*',
-        '|' => '\|',
-        '[' => '\['
-    );
-
-    public static function ipa_replace_diacritics($rawtext) {
-        $mappings = self::$filteripadiacritics;
-        $specials = array_keys(self::$escapees);
-        $escapes  = array_values(self::$escapees);
+    public function ipa_replace_diacritics($rawtext) {
+        $mappings = $this->diacritics;
+        $specials = array_keys($this->escapees);
+        $escapes  = array_values($this->escapees);
         foreach ($mappings as $ascii => $htmlent) {
             $frames = explode('.', $ascii);
             if (!array_key_exists('1', $frames)) {
@@ -64,8 +36,8 @@ class filter_ipa extends moodle_text_filter {
         return $rawtext;
     }
 
-    public static function ipa_replace_chars($rawtext) {
-        $mappings = self::$filteripadefaults;
+    public function ipa_replace_chars($rawtext) {
+        $mappings = $this->defaults;
         $asciis = array_keys($mappings);
         $utf8s = array_values($mappings);
         $ipatext = str_replace($asciis, $utf8s, $rawtext);
@@ -73,8 +45,8 @@ class filter_ipa extends moodle_text_filter {
     }
 
     public static function return_ipa_json() {
-        $diacritics = self::$filteripadiacritics;
-        $defaults = self::$filteripadefaults;
+        $diacritics = $this->diacritics;
+        $defaults = $this->defaults;
         $fullset = $diacritics + $defaults;
         return json_encode($fullset, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
     }
@@ -85,8 +57,8 @@ class filter_ipa extends moodle_text_filter {
         $needle = $ipastart . '(.*?)' . $ipaend;
         preg_match_all("/$needle/", $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
-            $firstpass = self::ipa_replace_diacritics($markup);
-            $display = self::ipa_replace_chars($firstpass);
+            $firstpass = $this->ipa_replace_diacritics($markup);
+            $display = $this->ipa_replace_chars($firstpass);
             $span = html_writer::tag('span', $display, array('class'=>'filter-ipa'));
             $text = str_replace($ipas[0][$key], $span, $text);
         }
