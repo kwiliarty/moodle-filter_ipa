@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__) . '/lib.php');
+
 class filter_ipa extends moodle_text_filter {
 
     public static $filteripadefaults = array(
@@ -78,7 +80,10 @@ class filter_ipa extends moodle_text_filter {
     }
 
     public function filter($text, array $options = array()) {
-        preg_match_all('|ipa{(.*?)}ipa|', $text, $ipas);
+        $ipastart = preg_quote(FILTER_IPA_START);
+        $ipaend = preg_quote(FILTER_IPA_END);
+        $needle = $ipastart . '(.*?)' . $ipaend;
+        preg_match_all("/$needle/", $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
             $firstpass = self::ipa_replace_diacritics($markup);
             $display = self::ipa_replace_chars($firstpass);
