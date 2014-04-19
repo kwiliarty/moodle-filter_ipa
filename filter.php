@@ -30,14 +30,19 @@ class filter_ipa extends moodle_text_filter {
 
     public static function ipa_replace_diacritics($rawtext) {
         $mappings = self::$filteripadiacritics;
-        foreach ($mappings as $ascii => $utf8) {
-            $onset = "\s{";
-            $peak = "m";
-            $coda = "}";
-            preg_match_all('/\\\s{m}/', $rawtext, $targets);
-            echo "<pre>";
-            print_r($targets);
-            echo "</pre>";
+        foreach ($mappings as $ascii => $htmlent) {
+            $frames = explode('.', $ascii);
+            if (!array_key_exists('1', $frames)) {
+                $frames[1] = '';
+            }
+            preg_match_all("/\\$frames[0](.)$frames[1]/", $rawtext, $targets, PREG_SET_ORDER);
+            foreach ($targets as $target) {
+                if (array_key_exists('1', $target)) {
+                    $utf8 = mb_convert_encoding($htmlent, 'UTF-8', 'HTML-ENTITIES');
+                    $rawtext = str_replace($target[0], $target[1].$utf8, $rawtext);
+                }
+            }
+            return $rawtext;
         }
     }
 
@@ -54,7 +59,7 @@ class filter_ipa extends moodle_text_filter {
     }
 
     public function filter($text, array $options = array()) {
-        self::ipa_replace_diacritics($text);
+        $text = self::ipa_replace_diacritics($text);
         preg_match_all('|ipa{(.*?)}|', $text, $ipas);
         foreach ($ipas[1] as $key => $markup) {
             $display = self::ipa_replace_chars($markup);
