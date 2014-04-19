@@ -4,4 +4,6 @@
 .filter-ipa {
     font-family: 'Tinos', 'Noto Sans', sans-serif;
     font-size: 1.1em;
+    letter-spacing: 1px;
+    line-height: 1.3em;
 }
