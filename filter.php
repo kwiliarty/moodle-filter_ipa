@@ -44,7 +44,7 @@ class filter_ipa extends moodle_text_filter {
         return $ipatext;
     }
 
-    public static function return_ipa_json() {
+    public function return_ipa_json() {
         $diacritics = $this->diacritics;
         $defaults = $this->defaults;
         $fullset = $diacritics + $defaults;
