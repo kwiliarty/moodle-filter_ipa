@@ -21,11 +21,11 @@ class filter_ipa extends moodle_text_filter {
         $escapes  = array_values($this->escapees);
         foreach ($mappings as $ascii => $htmlent) {
             $frames = explode('.', $ascii);
-            if (!array_key_exists('1', $frames)) {
-                $frames[1] = '';
+            if (!array_key_exists('1', $frames) || ($frames[1] == '')) {
+                $frames[1] = '}';
             }
             $frames[0] = str_replace($specials, $escapes, $frames[0]);
-            preg_match_all("/\\$frames[0](.)$frames[1]/", $rawtext, $targets, PREG_SET_ORDER);
+            preg_match_all("/\\$frames[0]([^}]*)$frames[1]/", $rawtext, $targets, PREG_SET_ORDER);
             foreach ($targets as $target) {
                 if (array_key_exists('1', $target)) {
                     $utf8 = mb_convert_encoding($htmlent, 'UTF-8', 'HTML-ENTITIES');
