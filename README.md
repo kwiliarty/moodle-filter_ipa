@@ -43,3 +43,6 @@ Tinos is a stylish serif font and one of only a couple Google Web Fonts that han
 
     <link rel="stylesheet" href="URL_TO_YOUR_MOODLE/filter/ipa/tinos.css" type="text/css">
 
+## Usage ##
+
+Enclose X-SAMPA in curly braces with hyphens outermost: "-{" opens a stretch of X-SAMPA, and "}-" closes the stretch.
