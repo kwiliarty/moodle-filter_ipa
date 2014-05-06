@@ -1,13 +1,13 @@
 # Moodle IPA Filter #
 
-http://github.com
+[Source URL](https://github.com/kwiliarty/moodle-filter_ipa.git)
 
 The Moodle IPA Filter displays [X-SAMPA](http://en.wikipedia.org/wiki/X-sampa) as unicode IPA. The intent is to offer an easy and fast way to display the [International Phonetic Alphabet](http://www.langsci.ucl.ac.uk/ipa/) in Moodle.
 
 ## Installing the filter ##
 
 1. Download the latest version of the Moodle IPA Filter and put the ipa folder in Moodle at /filter/ipa. 
-2. **OR...** From your main Moodle directory: `git clone xxx filter/ipa`
+2. **OR...** From your main Moodle directory: `git clone https://github.com/kwiliarty/moodle-filter_ipa.git filter/ipa`
 3. In Moodle go to *Site administration > Notifications* and install the filter
 4. Next go to *Site Administration > Plugins > Filters > Manage Filters*
 5. Enable the IPA filter (or set it to "Off but available")
