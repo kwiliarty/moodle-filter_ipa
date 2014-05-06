@@ -13,7 +13,7 @@ The Moodle IPA Filter displays [X-SAMPA](http://en.wikipedia.org/wiki/X-sampa) a
 5. Enable the IPA filter (or set it to "Off but available")
 6. Test the filter by entering a string such as the following to the content of a label: 
 
-    -{D@ "fIlt@` Iz "w@`kIN}-
+    -{D@ "fIlt@r Iz "w@rkIN}-
 
 ## Fonts ##
 
