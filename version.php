@@ -30,4 +30,4 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2014050600;
 $plugin->requires  = 2013111800;
 $plugin->component = 'filter_ipa';
-$plugin->maturity  = MATURITY_BETA;
+$plugin->maturity  = MATURITY_RC;
