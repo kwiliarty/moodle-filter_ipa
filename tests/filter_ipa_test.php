@@ -42,18 +42,20 @@ class filter_ipa_testcase extends basic_testcase {
     public function get_filter_ipa_conversion_tests() {
 
         $teststrings = array(
-            '-{D@}-'      => 'ðə',
-            '-{Iz}-'      => 'ɪz',
-            '-{O\}-'      => 'ʘ',
-            '-{b_<arU}-'  => 'ɓarʊ',
-            '-{hu:d`}-'   => 'huːɖ',
-            '-{"v6r\`i}-' => 'ˈvɐɻi',
-            '-{G\_<a}-'   => 'ʛa',
-            "-{t'}-"      => 'tʲ',
-            '-{t_j}-'     => 'tʲ',
-            "-{t3\:l'}-"  => 'tɞːlʲ',
-            '-{m_0}-'     => 'm̥',
-            '-{m_0=}-'    => 'm̥̩',
+            '-{D@}-'       => 'ðə',
+            '-{Iz}-'       => 'ɪz',
+            '-{O\}-'       => 'ʘ',
+            '-{b_<arU}-'   => 'ɓarʊ',
+            '-{hu:d`}-'    => 'huːɖ',
+            '-{"v6r\`i}-'  => 'ˈvɐɻi',
+            '-{G\_<a}-'    => 'ʛa',
+            '-{G\_&lt;a}-' => 'ʛa',
+            "-{t'}-"       => 'tʲ',
+            '-{&lt}-'      => 'ɶlt',
+            '-{t_j}-'      => 'tʲ',
+            "-{t3\:l'}-"   => 'tɞːlʲ',
+            '-{m_0}-'      => 'm̥',
+            '-{m_0=}-'     => 'm̥̩',
         );
 
         $data = $this->_pack_teststrings($teststrings);
