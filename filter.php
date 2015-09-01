@@ -57,10 +57,11 @@ class filter_ipa extends moodle_text_filter {
      * @return string Unicode IPA
      */
     public function ipa_replace_chars($markup) {
+        $decoded = html_entity_decode($markup);
         $mappings = $this->mappings;
         $asciis = array_keys($mappings);
         $utf8s = array_values($mappings);
-        $ipatext = str_replace($asciis, $utf8s, $markup);
+        $ipatext = str_replace($asciis, $utf8s, $decoded);
         return $ipatext;
     }
 
