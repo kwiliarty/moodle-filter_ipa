@@ -17,7 +17,7 @@
 /**
  *  IPA filtering
  *
- *  This filter will replace X-SAMPA markup between '-{' and '}-' with unicode IPA 
+ *  This filter will replace X-SAMPA markup between '-{' and '}-' with unicode IPA
  *  For best results it is a good idea also to load an IPA fully-capable font
  *
  * @package    filter_ipa
