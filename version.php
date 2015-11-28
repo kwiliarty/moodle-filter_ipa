@@ -27,8 +27,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2014111500;
+$plugin->version   = 2014111501;
 $plugin->requires  = 2014101000;
-$plugin->release   = 'v1.1.1-M28 (Build: 2015090100)';
+$plugin->release   = 'v1.1.2-M28 (Build: 2015112700)';
 $plugin->component = 'filter_ipa';
 $plugin->maturity  = MATURITY_STABLE;
