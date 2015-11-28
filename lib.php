@@ -17,7 +17,7 @@
 /**
  *  IPA filtering
  *
- *  This filter will replace X-SAMPA markup between '-{' and '}-' with unicode IPA 
+ *  This filter will replace X-SAMPA markup between '-{' and '}-' with unicode IPA
  *  For best results it is a good idea also to load an IPA fully-capable font
  *
  * @package    filter_ipa
@@ -226,10 +226,10 @@ class filter_ipa_mappings {
     /**
      * Return the X-SAMPA / IPA mappings
      *
-     * This is the getter for the class. 
+     * This is the getter for the class.
      * This process is slightly complicated by the possible presence of a blank character
      * in combination with a combining mark. It's hard to work with combining marks that are
-     * not attached to some 'host' character, but when you apply the filter, you want the 
+     * not attached to some 'host' character, but when you apply the filter, you want the
      * combining mark to attach itself to the previous character in the string. The preg_prelace()
      * removes the blank space so that the mapping is directly to the combining mark.
      *
