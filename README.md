@@ -1,6 +1,6 @@
 # Moodle IPA Filter #
 
-[![Build Status](https://travis-ci.org/kwiliarty/moodle-filter_ipa.svg?branch=master)](https://travis-ci.org/kwiliarty/moodle-filter_ipa)
+[![Build Status](https://travis-ci.org/kwiliarty/moodle-filter_ipa.svg?branch=MOODLE_31_STABLE)](https://travis-ci.org/kwiliarty/moodle-filter_ipa)
 
 [Source URL](https://github.com/kwiliarty/moodle-filter_ipa.git)
 
