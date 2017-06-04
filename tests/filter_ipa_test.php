@@ -18,8 +18,8 @@
  * Unit test for the filter_ipa
  *
  * @package    filter_ipa
- * @category   phpunit
- * @copyright  2014 Kevin Wiliarty <kevin.wiliarty@gmail.com>
+ * @category   test
+ * @copyright  2014 onwards Kevin Wiliarty <kevin.wiliarty@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,8 +28,21 @@ defined('MOODLE_INTERNAL') || die();
 global $CFG;
 require_once($CFG->dirroot . '/filter/ipa/filter.php'); // Include the code to test.
 
+/**
+ * PHPUnit tests for filter_ipa substitutions.
+ *
+ * @package    filter_ipa
+ * @copyright  2014 onwards Kevin Wiliarty <kevin.wiliarty@gmail.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class filter_ipa_testcase extends basic_testcase {
 
+    /**
+     * Transform an associative array into an array of arrays
+     *
+     * @param array $teststrings An array of strings with ascii keys and IPA values
+     * @return array $data An array of arrays to be treated as input and output
+     */
     private function _pack_teststrings($teststrings) {
 
         $data = array();
@@ -39,6 +52,11 @@ class filter_ipa_testcase extends basic_testcase {
         return $data;
     }
 
+    /**
+     * Package actual test strings into a data array
+     *
+     * @return array $data A populated array of arrays to be treated as input and output for tests
+     */
     public function get_filter_ipa_conversion_tests() {
 
         $teststrings = array(
@@ -62,6 +80,11 @@ class filter_ipa_testcase extends basic_testcase {
         return $data;
     }
 
+    /**
+     * Provides some input and output to test embedding of filtered content
+     *
+     * @return array $data An array of arrays structured as input and output for testing
+     */
     public function get_filter_ipa_embedding_tests() {
 
         $teststrings = array(
@@ -74,7 +97,11 @@ class filter_ipa_testcase extends basic_testcase {
     }
 
     /**
+     * Test simple string conversions
+     *
      * @dataProvider get_filter_ipa_conversion_tests
+     * @param string $ascii An ASCII string
+     * @param string $ipa The expected IPA string result of filter conversion
      */
     public function test_convert_ascii_to_ipa($ascii, $ipa) {
         $testfilter = new filter_ipa();
@@ -83,7 +110,11 @@ class filter_ipa_testcase extends basic_testcase {
     }
 
     /**
+     * Test embedded string conversions
+     *
      * @dataProvider get_filter_ipa_embedding_tests
+     * @param string $ascii Text containing ASCII strings to be filtered
+     * @param string $ipa The expected text output containing IPA string results of filter conversion
      */
     public function test_embedding($ascii, $ipa) {
         $testfilter = new filter_ipa();
