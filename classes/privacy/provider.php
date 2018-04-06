@@ -15,17 +15,33 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *  IPA filtering
- *
- *  This filter will replace X-SAMPA markup between '-{' and '}-' with unicode IPA
- *  For best results it is a good idea also to load an IPA fully-capable font
+ * This file explains this plugins status in relation to the GDPR.
  *
  * @package    filter_ipa
- * @copyright  2014 onwards Kevin Wiliarty {@link http://kevinwiliarty.com}
+ * @copyright  2018 Kevin Wiliarty
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+namespace filter_ipa\privacy;
 
-$string['filtername']          = 'IPA';
-$string['privacy:null_reason'] = 'The IPA filter displays existing markup in the International Phonetic Alphabet. It does not effect or store any data itself.';
+defined('MOODLE_INTERNAL') || die;
+
+/**
+ * A provider class to address GDPR
+ *
+ * @package    filter_ipa
+ * @copyright  2018 CLAMP
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\metadata\null_provider {
+
+    /**
+     * Get the language string identifier from the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return string
+     */
+    public static function get_reason() {
+        return 'privacy:null_reason';
+    }
+}
