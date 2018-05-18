@@ -27,5 +27,5 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['filtername']          = 'IPA';
-$string['privacy:null_reason'] = 'The IPA filter displays existing markup in the International Phonetic Alphabet. It does not effect or store any data itself.';
+$string['filtername']       = 'IPA';
+$string['privacy:metadata'] = 'The IPA filter displays existing markup in the International Phonetic Alphabet. It does not effect or store any data itself.';
