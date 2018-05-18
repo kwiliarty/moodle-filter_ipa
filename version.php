@@ -27,8 +27,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2018040600;
+$plugin->version   = 2018051800;
 $plugin->requires  = 2016120500; // Moodle 3.2.
-$plugin->release   = 'v1.1.8 (Build: 2018040600)';
+$plugin->release   = 'v1.1.9 (Build: 2018051800)';
 $plugin->component = 'filter_ipa';
 $plugin->maturity  = MATURITY_STABLE;
