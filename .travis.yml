@@ -4,14 +4,6 @@ sudo: true
 
 addons:
   firefox: "47.0.1"
-  postgresql: "9.3"
-  apt:
-    packages:
-      - oracle-java8-installer
-      - oracle-java8-set-default
-
-addons:
-  firefox: "47.0.1"
   postgresql: "9.4"
 
 cache:
@@ -25,52 +17,55 @@ php:
   - 7.2
   - 7.3
 
+services:
+  - mysql
+
 env:
  matrix:
-  - DB=pgsql MOODLE_BRANCH=MOODLE_34_STABLE
   - DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
-  - DB=pgsql MOODLE_BRANCH=MOODLE_36_STABLE
-  - DB=pgsql MOODLE_BRANCH=MOODLE_37_STABLE
-  - DB=mysqli MOODLE_BRANCH=MOODLE_34_STABLE
   - DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
+  - DB=pgsql MOODLE_BRANCH=MOODLE_36_STABLE
   - DB=mysqli MOODLE_BRANCH=MOODLE_36_STABLE
+  - DB=pgsql MOODLE_BRANCH=MOODLE_37_STABLE
   - DB=mysqli MOODLE_BRANCH=MOODLE_37_STABLE
+  - DB=pgsql MOODLE_BRANCH=MOODLE_38_STABLE
+  - DB=mysqli MOODLE_BRANCH=MOODLE_38_STABLE
 
 matrix:
   # Just run the highest and lowest for each branch
   exclude:
     - php: 7.0
+      env: DB=pgsql MOODLE_BRANCH=MOODLE_38_STABLE
+    - php: 7.0
+      env: DB=mysqli MOODLE_BRANCH=MOODLE_38_STABLE
+    - php: 7.0
       env: DB=pgsql MOODLE_BRANCH=MOODLE_37_STABLE
     - php: 7.0
       env: DB=mysqli MOODLE_BRANCH=MOODLE_37_STABLE
-    - php: 7.1
-      env: DB=pgsql MOODLE_BRANCH=MOODLE_34_STABLE
-    - php: 7.1
-      env: DB=mysqli MOODLE_BRANCH=MOODLE_34_STABLE
-    - php: 7.1
-      env: DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
-    - php: 7.1
-      env: DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
-    - php: 7.1
-      env: DB=pgsql MOODLE_BRANCH=MOODLE_36_STABLE
-    - php: 7.1
-      env: DB=mysqli MOODLE_BRANCH=MOODLE_36_STABLE
+    - php: 7.2
+      env: DB=pgsql MOODLE_BRANCH=MOODLE_38_STABLE
+    - php: 7.2
+      env: DB=mysqli MOODLE_BRANCH=MOODLE_38_STABLE
     - php: 7.2
       env: DB=pgsql MOODLE_BRANCH=MOODLE_37_STABLE
     - php: 7.2
       env: DB=mysqli MOODLE_BRANCH=MOODLE_37_STABLE
-    - php: 7.3
-      env: DB=pgsql MOODLE_BRANCH=MOODLE_34_STABLE
-    - php: 7.3
-      env: DB=mysqli MOODLE_BRANCH=MOODLE_34_STABLE
-    - php: 7.3
-      env: DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
-    - php: 7.3
-      env: DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
+    - php: 7.1
+      env: DB=pgsql MOODLE_BRANCH=MOODLE_36_STABLE
+    - php: 7.1
+      env: DB=mysqli MOODLE_BRANCH=MOODLE_36_STABLE
     - php: 7.3
       env: DB=pgsql MOODLE_BRANCH=MOODLE_36_STABLE
     - php: 7.3
       env: DB=mysqli MOODLE_BRANCH=MOODLE_36_STABLE
+    - php: 7.1
+      env: DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
+    - php: 7.1
+      env: DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
+    - php: 7.3
+      env: DB=pgsql MOODLE_BRANCH=MOODLE_35_STABLE
+    - php: 7.3
+      env: DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
 
 before_install:
   - phpenv config-rm xdebug.ini
